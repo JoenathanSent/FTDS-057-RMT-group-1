@@ -57,17 +57,17 @@ def scrape_hexacom(keyword: str) -> pd.DataFrame:
 
 def scrape_klikgalaxy(keyword: str) -> pd.DataFrame:
     '''
-        Fungsi ini mengambil data dari klikgalaxy
-        
-        Arguments:
-          keyword (str) - product yang dicari
-        
-        Output:
-          df (pd.Dataframe) - dataframe yang memiliki data product_name, url, price_idr
-        
-        Example:
-          df = scrape_klikgalaxy('rtx 5060')
-        '''
+    Fungsi ini mengambil data dari klikgalaxy
+    
+    Arguments:
+        keyword (str) - product yang dicari
+    
+    Output:
+        df (pd.Dataframe) - dataframe yang memiliki data product_name, url, price_idr
+    
+    Example:
+        df = scrape_klikgalaxy('rtx 5060')
+    '''
     try:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -99,4 +99,54 @@ def scrape_klikgalaxy(keyword: str) -> pd.DataFrame:
 
     except Exception as e:
         print(f"Error scraping klikgalaxy: {e} ")
+        return None
+
+
+def scrape_nano(keyword: str) -> pd.DataFrame:
+    '''
+    Fungsi ini mengambil data dari nanokomputer
+    
+    Arguments:
+        keyword (str) - product yang dicari
+    
+    Output:
+        df (pd.Dataframe) - dataframe yang memiliki data product_name, url, price_idr
+    
+    Example:
+        df = scrape_nano('rtx 5060')
+    '''
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        }
+
+        base_url = 'https://nanokomputer.com/search?q='
+        url = f'{base_url}{keyword}'
+
+        resp = requests.get(url, headers=headers, timeout=30)
+
+        soup = BeautifulSoup(resp.text, 'lxml')
+
+        listing = soup.find_all("li", {"class": "product-grid__item"})
+
+        data = {"product_name": [], "url": [], "price_idr": []}
+        for item in listing:
+            name = item.find("p").get_text()
+            url = "https://nanokomputer.com" + item.find("a").get("href")
+            price_str = item.find("span", {"class": "price"}).get_text().replace("Rp", "").replace(".", "").strip()
+
+            price = None
+            try:
+                price = int(price_str)
+            except Exception as e:
+                print(f"Failed converting price {price_str} to int: {e}")
+
+            data["product_name"].append(name)
+            data["url"].append(url)
+            data["price_idr"].append(price)
+
+        return pd.DataFrame(data)
+
+    except Exception as e:
+        print(f"Error scraping nanokomputer: {e}")
         return None
