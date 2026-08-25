@@ -12,7 +12,7 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 import os
 CURRENT_PATH = os.getcwd()
 
-def run_lga_1700_raptor_lake():
+def run_am5_amd_a620():
     # Membuat title 
     st.title('DealSense')
 
@@ -151,4 +151,4 @@ def run_lga_1700_raptor_lake():
 
 
 if __name__ == '__main__':
-    run_lga_1700_raptor_lake()
+    run_am5_amd_a620()
