@@ -27,6 +27,8 @@ arima_ram = joblib.load('./models/arima/ram.joblib')
 def run_predict_price():
     st.title('DealSense')
 
+    st.image("assets/banner_inference_alt.svg", use_container_width=True)
+
     st.subheader('Dapatkan perkiraan harga part PC mu!')
 
     cat_opt = st.selectbox(
@@ -34,9 +36,27 @@ def run_predict_price():
         ("PROCESSORS", "GRAPHICS CARDS", "MEMORY"),
     )
 
+    # filter product by category
     selected_cat_df = local_price[local_price['pangoly_category'] == cat_opt]
 
-    prod_types = list(selected_cat_df['actual_type'].unique())
+    sub_cat_maps = {
+        "PROCESSORS": ["INTEL", "AMD"],
+        "GRAPHICS CARDS": ["NVIDIA", "AMD"],
+        "MEMORY": ["DDR4", "DDR5"]
+    }
+
+    sub_cat_opt = st.selectbox(
+        "Sub Category: ",
+        sub_cat_maps[cat_opt]
+    )
+
+    # filter products by sub category
+    if cat_opt == 'GRAPHICS CARDS' and sub_cat_opt == 'NVIDIA':
+        sub_cat_df = selected_cat_df[selected_cat_df['pangoly_group'].str.contains('GeForce')]
+    else:    
+        sub_cat_df = selected_cat_df[selected_cat_df['product_name'].str.contains(sub_cat_opt)]
+
+    prod_types = list(sub_cat_df['actual_type'].unique())
     prod_types.sort()
 
     product_type_opt = st.selectbox(
@@ -44,20 +64,40 @@ def run_predict_price():
         prod_types
     )
 
+    # filter product by type
     selected_df = local_price[local_price['actual_type'] == product_type_opt]
 
+    # calculate lower and upper boundary
     price_col = 'price_idr'
     q1 = selected_df[price_col].quantile(0.25)
+    q2 = selected_df[price_col].quantile(0.5)
     q3 = selected_df[price_col].quantile(0.75)
-    median = selected_df[price_col].quantile(0.5)
+    
 
     st.header("Harga Saat Ini")
     lower_limit = f'{q1:,.0f}'.replace(',', '.')
+    median = f'{q2:,.0f}'.replace(',', '.')
     upper_limit = f'{q3:,.0f}'.replace(',', '.')
-    st.write(f'Rentang Harga: Rp. {lower_limit} - Rp. {upper_limit} dari {len(selected_df)} data')
+    st.write(f'Harga berdasarkan {len(selected_df)} data')
+
+    local_price_col1, local_price_col2, local_price_col3 = st.columns(3)
+
+    with local_price_col1:
+        with st.container(border=True):
+            st.markdown("##### Batas Bawah")
+            st.markdown(f"#### Rp. {lower_limit}")
+
+    with local_price_col2:
+        with st.container(border=True):
+            st.markdown("##### Nilai Tengah")
+            st.markdown(f"#### Rp. {median}")
+
+    with local_price_col3:
+        with st.container(border=True):
+            st.markdown("##### Batas Atas")
+            st.markdown(f"#### Rp. {upper_limit}")
 
     group_opt = selected_df['pangoly_group'].iloc[0]
-
 
     st.header("Perkiraan Perubahan Harga")
 
@@ -78,9 +118,26 @@ def run_predict_price():
         changes.append(arima_pct_change)
 
     pct_change = sum(changes)/len(changes)
+    is_rising = pct_change > 0
 
-    
-    st.write(f'Prediksi perubahan harga:  {pct_change:.2f}% {"⬆" if pct_change > 0 else "⬇"}')
+    price_change_col1, price_change_col2 = st.columns(2)
+
+    pred_price = q2 * (1 +(pct_change/100))
+    pred_median = f'{pred_price:,.0f}'.replace(',', '.')
+
+    with price_change_col1:
+        with st.container(border=True):
+            st.markdown("##### Harga")
+            st.markdown(f"#### Rp. {pred_median}")
+
+    pct_color = 'red' if is_rising else 'green'
+    with price_change_col2:
+        with st.container(border=True):
+            st.markdown("##### Prediksi")
+            st.markdown(f"#### :{pct_color}[{'⬆' if is_rising else '⬇'} {pct_change:.2f}%]")
+
+    st.caption("Harga berdasarkan prediksi model tidak dijamin tepat, harga di masa depan bisa berbeda.")
+
 
 def lgbm_predict(group_opt, steps = 60):
     preds = predict(steps, group_opt, pangoly_price, lgbm)
