@@ -14,6 +14,8 @@ _Project ini dibuat sebagai bukti kesuksesan pembelajaran student pada Hacktiv8 
 
 ### **DealSense**
 
+![plot](DealSense.jpg)
+
 DealSense adalah sebuah aplikasi untuk melakukan prediksi harga sebuah komponen komputer berdasarkan harga komponen tersebut dari sebuah kurun waktu tertentu.
 
 ---
