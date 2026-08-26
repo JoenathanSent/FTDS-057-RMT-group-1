@@ -1,1 +1,3 @@
 *__pycache__
+
+models/arima/auto_arima.joblib
