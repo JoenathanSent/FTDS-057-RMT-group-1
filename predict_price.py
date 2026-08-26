@@ -16,7 +16,7 @@ local_price = local_price.dropna(subset=['pangoly_group'])
 
 lgbm = joblib.load('./models/lgbm/lgbm.joblib')
 
-def run():
+def run_predict_price():
     st.title('DealSense')
 
     st.subheader('Dapatkan perkiraan harga part PC mu!')
