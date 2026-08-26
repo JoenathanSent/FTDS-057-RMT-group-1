@@ -93,11 +93,11 @@ def run_lga_1700_raptor_lake():
     st.pyplot(fig)
     st.write('')
     st.write('Dari 2 visualisasi dekomposisi diatas, dapat kita ambil kesimpulan bahwa:')
-    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga CPU untuk LGA 1700 Raptor Lake memiliki kenaikan harga di awal perilisan komponen, kemudian harganya turun kembali ke harga normal setelah sekitar 3 bulan dan menurun secara perlahan hingga sekitar September 2025. Setelah itu harga kembali naik karena terdapat kelangkaan chip untuk komponen komputer dikarenakan banyak perusahaan membeli komponen komputer secara masif untuk membuat Pusat Data (Data Center) untuk pengembangan AI')
-    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Socket CPU LGA 1700 Raptor Lake')
-    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Socket CPU LGA 1700 Raptor Lake')
+    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga CPU untuk LGA 1700 Raptor Lake memiliki kenaikan harga di awal perilisan komponen, kemudian harganya turun kembali ke harga normal setelah sekitar 3 bulan dan menurun secara perlahan hingga sekitar September 2025. Setelah itu harga kembali naik karena terdapat kelangkaan chip untuk komponen komputer dikarenakan banyak perusahaan membeli komponen komputer secara masif untuk membuat Pusat Data (Data Center) untuk pengembangan AI.')
+    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Socket CPU LGA 1700 Raptor Lake.')
+    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Socket CPU LGA 1700 Raptor Lake.')
 
-    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function  (PACF)')
+    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function (PACF)')
     len_train = round(len(df) * 0.9)
 
     df_avg_price_train = df[:len_train]
@@ -127,7 +127,7 @@ def run_lga_1700_raptor_lake():
         st.write(f'p-value: {result[1]}')
         st.write('Nilai Kritikal (Critical Values):')
         for key, value in result[4].items():
-            st.write(f'Nilai Signifikasnsi \t{key}: {value}')
+            st.write(f'Nilai Signifikansi \t{key}: {value}')
 
         st.write('\n--- Kesimpulan ---')
         if (result[1] < 0.05) & (result[4]['5%'] > result[0]):

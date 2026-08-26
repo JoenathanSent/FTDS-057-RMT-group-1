@@ -17,20 +17,20 @@ def run_air_cooler():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen CPU Socket Merk LGA 1700 Raptor Lake')
+    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Pendingin CPU Air Cooler')
 
     # Menampilkan teks
-    st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer CPU Socket LGA 1700 Raptor Lake sejak tanggal 4 Oktober 2022 sampai dengan 21 Agustus 2026.')
+    st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer Pendingin CPU Air Cooler sejak tanggal 21 Agustus 2022 sampai dengan 21 Agustus 2026.')
     # Menampilkan gambar
-    image_path = os.path.join(CURRENT_PATH, 'Analysis', 'CPU', 'lga_1700_raptor_lake', 'intel_processor_intel_core_i9_14900k_box_raptor_lake_socket_lga_1700_full01_glgj77gp.webp')
+    image_path = os.path.join(CURRENT_PATH, 'Analysis', 'CPU_Cooler', 'air_cooler', 'digital-alliance-cpu-air-cooler-int17-rgb-for-intel-lga115x-lga1200-lga1700-1y-air-cooler-for-intel-cpu-cooler.jpg')
                               
     data = mpimage.imread(image_path)
-    st.image(data, caption='EDA LGA 1700 Raptor Lake')
-    df = pd.read_csv('./Analysis/CPU/lga_1700_raptor_lake/lga1700_raptor_lake.csv')
+    st.image(data, caption='EDA Air Cooler')
+    df = pd.read_csv('./Analysis/CPU_Cooler/air_cooler/air_cooler.csv')
     df['date'] = pd.to_datetime(df['date'])
     df = df.set_index('date')
 
-    st.write('# Exploratory Data Analysis untuk komponen socket CPU LGA 1700 Raptor Lake')
+    st.write('# Exploratory Data Analysis untuk komponen pendingin CPU Air Cooler')
 
     st.subheader('1. Deteksi trend, seasonality, dan residual dengan melakukan dekomposisi')
     st.write('A. Metode Aditif')
@@ -43,7 +43,7 @@ def run_air_cooler():
         fontweight='bold',
         y=1.02
     )
-    fig.axes[0].set_title('Data Rata-rata Harga Socket CPU LGA 1700 Raptor Lake')
+    fig.axes[0].set_title('Data Rata-rata Harga Pendingin CPU Air Cooler')
     fig.subplots_adjust(hspace=0.5)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
@@ -73,7 +73,7 @@ def run_air_cooler():
         fontweight='bold',
         y=1.02
     )
-    fig.axes[0].set_title('Data Rata-rata Harga Socket CPU LGA 1700 Raptor Lake')
+    fig.axes[0].set_title('Data Rata-rata Harga Pendingin CPU Air Cooler')
     fig.subplots_adjust(hspace=0.5)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
@@ -93,18 +93,18 @@ def run_air_cooler():
     st.pyplot(fig)
     st.write('')
     st.write('Dari 2 visualisasi dekomposisi diatas, dapat kita ambil kesimpulan bahwa:')
-    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga CPU untuk LGA 1700 Raptor Lake memiliki kenaikan harga di awal perilisan komponen, kemudian harganya turun kembali ke harga normal setelah sekitar 3 bulan dan menurun secara perlahan hingga sekitar September 2025. Setelah itu harga kembali naik karena terdapat kelangkaan chip untuk komponen komputer dikarenakan banyak perusahaan membeli komponen komputer secara masif untuk membuat Pusat Data (Data Center) untuk pengembangan AI')
-    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Socket CPU LGA 1700 Raptor Lake')
-    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Socket CPU LGA 1700 Raptor Lake')
+    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga pendingin CPU untuk Air Cooler cenderung fluktuatif. Namun secara keseluruhan harganya tetap stabil di antara 50 sampai 60 USD.')
+    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Pendingin CPU Air Cooler.')
+    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Pendingin CPU Air Cooler.')
 
-    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function  (PACF)')
+    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function (PACF)')
     len_train = round(len(df) * 0.9)
 
     df_avg_price_train = df[:len_train]
     df_avg_price_test = df[len_train:]
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 11))
-    fig.suptitle('Visualisasi ACF dan PACF dari data pelatihan harga rata-rata Socket CPU LGA 1700 Raptor Lake', fontsize=16)
+    fig.suptitle('Visualisasi ACF dan PACF dari data pelatihan harga rata-rata Pendingin CPU Air Cooler', fontsize=16)
     plot_acf(df_avg_price_train['avg'], ax=ax1, lags=30)
     ax1.set_title('Auto Correlation Function(ACF)')
     plot_pacf(df_avg_price_train['avg'], ax=ax2, lags=30)
@@ -113,9 +113,9 @@ def run_air_cooler():
 
     st.write('Dari visualisasi ACF dan PACF diatas, dapat diketahui bahwa:')
     st.write('- Dari visualisasi diatas, ACF bersifat tails off berarti nilai q = 0 ')
-    st.write('- PACF bersifat cuts off setelah lag 3, berarti nilai p = 3, dengan alternatif nilai p adalah 8, 9, 18, dan 23')
+    st.write('- PACF bersifat cuts off setelah lag 2, berarti nilai p = 2, dengan alternatif nilai p adalah 5, 10, 17, dan 22')
     st.write('- Karena data belum melalui diferensiasi, maka nilai d = 0')
-    st.write('Dari poin diatas, maka model awal yang bisa digunakan adalah menggunakan parameter ARIMA(3,0,0)')
+    st.write('Dari poin diatas, maka model awal yang bisa digunakan adalah menggunakan parameter ARIMA(2,0,0)')
 
     st.subheader('3. Pembuktian bahwa data belum stasioner dengan ADF test')
     def perform_adf_test(series: pd.Series, series_name: str = "the series"):
@@ -141,13 +141,13 @@ def run_air_cooler():
             
         st.write("-" * 40)
 
-    perform_adf_test(df_avg_price_train['avg'], series_name="Data Harga Rata-rata Socket CPU LGA 1700 Raptor Lake")
+    perform_adf_test(df_avg_price_train['avg'], series_name="Data Harga Rata-rata Pendingin CPU Air Cooler")
 
     st.subheader('4. Data differencing')
 
     train_diff = df_avg_price_train.diff().dropna()
-    perform_adf_test(train_diff['avg'], series_name="Data Harga Rata-rata Socket CPU LGA 1700 Raptor Lake melalui 1x diferensiasi")
-    st.write('Dengan ini, maka model prediksi yang cocok digunakan adalah ARIMA (3,1,0)')
+    perform_adf_test(train_diff['avg'], series_name="Data Harga Rata-rata Pendingin CPU Air Cooler melalui 1x diferensiasi")
+    st.write('Dengan ini, maka model prediksi yang cocok digunakan adalah ARIMA (2,1,0)')
 
 
 if __name__ == '__main__':

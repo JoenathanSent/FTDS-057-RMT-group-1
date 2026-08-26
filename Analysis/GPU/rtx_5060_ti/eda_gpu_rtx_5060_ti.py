@@ -17,20 +17,20 @@ def run_rtx_5060_ti():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen CPU Socket Merk LGA 1700 Raptor Lake')
+    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen GPU RTX 5060 Ti')
 
     # Menampilkan teks
-    st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer CPU Socket LGA 1700 Raptor Lake sejak tanggal 4 Oktober 2022 sampai dengan 21 Agustus 2026.')
+    st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer GPU RTX 5060 Ti sejak tanggal 16 April 2025 sampai dengan 21 Agustus 2026.')
     # Menampilkan gambar
-    image_path = os.path.join(CURRENT_PATH, 'Analysis', 'CPU', 'lga_1700_raptor_lake', 'intel_processor_intel_core_i9_14900k_box_raptor_lake_socket_lga_1700_full01_glgj77gp.webp')
+    image_path = os.path.join(CURRENT_PATH, 'Analysis', 'GPU', 'rtx_5060_ti', 'product_1744697624283950bf56db092606f9203fa9b978f8.webp')
                               
     data = mpimage.imread(image_path)
-    st.image(data, caption='EDA LGA 1700 Raptor Lake')
-    df = pd.read_csv('./Analysis/CPU/lga_1700_raptor_lake/lga1700_raptor_lake.csv')
+    st.image(data, caption='EDA RTX 5060 Ti')
+    df = pd.read_csv('./Analysis/GPU/rtx_5060_ti/rtx_5060_ti.csv')
     df['date'] = pd.to_datetime(df['date'])
     df = df.set_index('date')
 
-    st.write('# Exploratory Data Analysis untuk komponen socket CPU LGA 1700 Raptor Lake')
+    st.write('# Exploratory Data Analysis untuk komponen GPU RTX 5060 Ti')
 
     st.subheader('1. Deteksi trend, seasonality, dan residual dengan melakukan dekomposisi')
     st.write('A. Metode Aditif')
@@ -43,7 +43,7 @@ def run_rtx_5060_ti():
         fontweight='bold',
         y=1.02
     )
-    fig.axes[0].set_title('Data Rata-rata Harga Socket CPU LGA 1700 Raptor Lake')
+    fig.axes[0].set_title('Data Rata-rata Harga GPU RTX 5060 Ti')
     fig.subplots_adjust(hspace=0.5)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
@@ -52,7 +52,7 @@ def run_rtx_5060_ti():
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 
         # Atur jarak antar label tanggal
-        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
+        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
 
         # Rotasi label tanggal
         plt.setp(
@@ -73,7 +73,7 @@ def run_rtx_5060_ti():
         fontweight='bold',
         y=1.02
     )
-    fig.axes[0].set_title('Data Rata-rata Harga Socket CPU LGA 1700 Raptor Lake')
+    fig.axes[0].set_title('Data Rata-rata Harga GPU RTX 5060 Ti')
     fig.subplots_adjust(hspace=0.5)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
@@ -82,7 +82,7 @@ def run_rtx_5060_ti():
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 
         # Atur jarak antar label tanggal
-        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=3))
+        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=1))
 
         # Rotasi label tanggal
         plt.setp(
@@ -93,18 +93,18 @@ def run_rtx_5060_ti():
     st.pyplot(fig)
     st.write('')
     st.write('Dari 2 visualisasi dekomposisi diatas, dapat kita ambil kesimpulan bahwa:')
-    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga CPU untuk LGA 1700 Raptor Lake memiliki kenaikan harga di awal perilisan komponen, kemudian harganya turun kembali ke harga normal setelah sekitar 3 bulan dan menurun secara perlahan hingga sekitar September 2025. Setelah itu harga kembali naik karena terdapat kelangkaan chip untuk komponen komputer dikarenakan banyak perusahaan membeli komponen komputer secara masif untuk membuat Pusat Data (Data Center) untuk pengembangan AI')
-    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Socket CPU LGA 1700 Raptor Lake')
-    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Socket CPU LGA 1700 Raptor Lake')
+    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga GPU untuk RTX 5060 Ti memiliki harga yang umumnya stabil sejak awal perilisan. Kemudian harganya naik di akhir Januari 2026 karena terkendala pasokan komponen memori grafis yang semakin langka dan lonjakan biaya produksi yang dikarenakan kebutuhan perusahaan global untuk kebutuhan infrastruktur server AI.')
+    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata GPU RTX 5060 Ti.')
+    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga GPU RTX 5060 Ti.')
 
-    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function  (PACF)')
+    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function (PACF)')
     len_train = round(len(df) * 0.9)
 
     df_avg_price_train = df[:len_train]
     df_avg_price_test = df[len_train:]
 
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 11))
-    fig.suptitle('Visualisasi ACF dan PACF dari data pelatihan harga rata-rata Socket CPU LGA 1700 Raptor Lake', fontsize=16)
+    fig.suptitle('Visualisasi ACF dan PACF dari data pelatihan harga rata-rata GPU RTX 5060 Ti', fontsize=16)
     plot_acf(df_avg_price_train['avg'], ax=ax1, lags=30)
     ax1.set_title('Auto Correlation Function(ACF)')
     plot_pacf(df_avg_price_train['avg'], ax=ax2, lags=30)
@@ -113,9 +113,9 @@ def run_rtx_5060_ti():
 
     st.write('Dari visualisasi ACF dan PACF diatas, dapat diketahui bahwa:')
     st.write('- Dari visualisasi diatas, ACF bersifat tails off berarti nilai q = 0 ')
-    st.write('- PACF bersifat cuts off setelah lag 3, berarti nilai p = 3, dengan alternatif nilai p adalah 8, 9, 18, dan 23')
+    st.write('- PACF bersifat cuts off setelah lag 2, berarti nilai p = 2')
     st.write('- Karena data belum melalui diferensiasi, maka nilai d = 0')
-    st.write('Dari poin diatas, maka model awal yang bisa digunakan adalah menggunakan parameter ARIMA(3,0,0)')
+    st.write('Dari poin diatas, maka model awal yang bisa digunakan adalah menggunakan parameter ARIMA(2,0,0)')
 
     st.subheader('3. Pembuktian bahwa data belum stasioner dengan ADF test')
     def perform_adf_test(series: pd.Series, series_name: str = "the series"):
@@ -127,7 +127,7 @@ def run_rtx_5060_ti():
         st.write(f'p-value: {result[1]}')
         st.write('Nilai Kritikal (Critical Values):')
         for key, value in result[4].items():
-            st.write(f'Nilai Signifikasnsi \t{key}: {value}')
+            st.write(f'Nilai Signifikansi \t{key}: {value}')
 
         st.write('\n--- Kesimpulan ---')
         if (result[1] < 0.05) & (result[4]['5%'] > result[0]):
@@ -141,13 +141,13 @@ def run_rtx_5060_ti():
             
         st.write("-" * 40)
 
-    perform_adf_test(df_avg_price_train['avg'], series_name="Data Harga Rata-rata Socket CPU LGA 1700 Raptor Lake")
+    perform_adf_test(df_avg_price_train['avg'], series_name="Data Harga Rata-rata GPU RTX 5060 Ti")
 
     st.subheader('4. Data differencing')
 
     train_diff = df_avg_price_train.diff().dropna()
-    perform_adf_test(train_diff['avg'], series_name="Data Harga Rata-rata Socket CPU LGA 1700 Raptor Lake melalui 1x diferensiasi")
-    st.write('Dengan ini, maka model prediksi yang cocok digunakan adalah ARIMA (3,1,0)')
+    perform_adf_test(train_diff['avg'], series_name="Data Harga Rata-rata GPU RTX 5060 Ti melalui 1x diferensiasi")
+    st.write('Dengan ini, maka model prediksi yang cocok digunakan adalah ARIMA (2,1,0)')
 
 
 if __name__ == '__main__':
