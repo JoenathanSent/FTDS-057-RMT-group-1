@@ -1,0 +1,147 @@
+<svg viewBox="0 0 1600 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inference banner alternative">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1226"/>
+      <stop offset="55%" stop-color="#131a3a"/>
+      <stop offset="100%" stop-color="#1f1147"/>
+    </linearGradient>
+
+    <linearGradient id="historyLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+
+    <linearGradient id="forecastLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+
+    <linearGradient id="areaFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="forecastArea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="coneFill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.03"/>
+    </linearGradient>
+
+    <radialGradient id="glowSpot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="glowSpotAmber" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1600" height="360" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1600" height="360" fill="url(#grid)"/>
+  <circle cx="220" cy="80" r="260" fill="url(#glowSpot)"/>
+  <circle cx="1420" cy="100" r="240" fill="url(#glowSpotAmber)"/>
+  <circle cx="780" cy="330" r="260" fill="url(#glowSpot)" opacity="0.6"/>
+
+  <!-- faint chip / circuit accents, spread around -->
+  <g opacity="0.18" stroke="#93c5fd" stroke-width="1.5" fill="none">
+    <rect x="70" y="46" width="40" height="40" rx="6"/>
+    <line x1="90" y1="46" x2="90" y2="28"/>
+    <line x1="90" y1="86" x2="90" y2="104"/>
+    <line x1="70" y1="66" x2="52" y2="66"/>
+    <line x1="110" y1="66" x2="128" y2="66"/>
+
+    <rect x="1490" y="270" width="36" height="36" rx="6"/>
+    <line x1="1508" y1="270" x2="1508" y2="253"/>
+    <line x1="1508" y1="306" x2="1508" y2="323"/>
+    <line x1="1490" y1="288" x2="1473" y2="288"/>
+    <line x1="1526" y1="288" x2="1543" y2="288"/>
+
+    <rect x="740" y="30" width="30" height="30" rx="5"/>
+    <line x1="755" y1="30" x2="755" y2="15"/>
+    <line x1="755" y1="60" x2="755" y2="75"/>
+  </g>
+
+  <!-- candlestick texture ticks under the history segment -->
+  <g stroke="#7dd3fc" stroke-opacity="0.35" stroke-width="3" stroke-linecap="round">
+    <line x1="140" y1="255" x2="140" y2="290"/>
+    <line x1="220" y1="235" x2="220" y2="270"/>
+    <line x1="300" y1="200" x2="300" y2="240"/>
+    <line x1="380" y1="175" x2="380" y2="215"/>
+    <line x1="460" y1="150" x2="460" y2="195"/>
+    <line x1="540" y1="165" x2="540" y2="205"/>
+    <line x1="620" y1="140" x2="620" y2="180"/>
+    <line x1="700" y1="155" x2="700" y2="195"/>
+    <line x1="780" y1="130" x2="780" y2="175"/>
+    <line x1="860" y1="150" x2="860" y2="190"/>
+  </g>
+
+  <!-- filled area under the history + forecast curve -->
+  <path d="M 60,320
+           L 60,235 C 160,255 240,205 320,220 S 460,155 540,180 S 680,145 780,150
+           C 900,155 1010,190 1120,170
+           C 1240,145 1360,215 1540,150
+           L 1540,320 Z"
+        fill="url(#areaFill)"/>
+
+  <!-- uncertainty cone for the forecast segment -->
+  <path d="M 960,175
+           C 1060,150 1200,220 1340,155
+           C 1400,130 1460,150 1540,120
+           L 1540,205
+           C 1460,225 1400,205 1340,235
+           C 1200,300 1060,235 960,215 Z"
+        fill="url(#coneFill)"/>
+
+  <!-- history price line -->
+  <path d="M 60,235 C 160,255 240,205 320,220 S 460,155 540,180 S 680,145 780,150 S 900,155 960,175"
+        fill="none" stroke="url(#historyLine)" stroke-width="5" stroke-linecap="round" filter="url(#softGlow)"/>
+
+  <!-- forecast dashed line (mean prediction) -->
+  <path d="M 960,175 C 1060,150 1200,220 1340,155 C 1400,130 1460,150 1540,120"
+        fill="none" stroke="url(#forecastLine)" stroke-width="5" stroke-linecap="round"
+        stroke-dasharray="2 15" filter="url(#softGlow)"/>
+
+  <!-- dashed split marker between history and forecast -->
+  <line x1="960" y1="55" x2="960" y2="320" stroke="#e2e8f0" stroke-opacity="0.28" stroke-width="2" stroke-dasharray="6 8"/>
+
+  <!-- data point markers along history -->
+  <g fill="#e0f2fe">
+    <circle cx="320" cy="220" r="5"/>
+    <circle cx="540" cy="180" r="5"/>
+    <circle cx="780" cy="150" r="5"/>
+    <circle cx="960" cy="175" r="7" fill="#f8fafc"/>
+  </g>
+
+  <!-- forecast point markers -->
+  <g fill="#fde68a">
+    <circle cx="1200" cy="185" r="5" opacity="0.85"/>
+    <circle cx="1340" cy="155" r="5" opacity="0.85"/>
+  </g>
+
+  <!-- final forecast marker with pulse rings -->
+  <circle cx="1540" cy="120" r="7" fill="#fde68a" filter="url(#softGlow)"/>
+  <circle cx="1540" cy="120" r="14" fill="none" stroke="#fde68a" stroke-opacity="0.45" stroke-width="2"/>
+  <circle cx="1540" cy="120" r="22" fill="none" stroke="#fde68a" stroke-opacity="0.22" stroke-width="2"/>
+
+  <!-- baseline -->
+  <line x1="60" y1="320" x2="1540" y2="320" stroke="#e2e8f0" stroke-opacity="0.22" stroke-width="2"/>
+</svg>
