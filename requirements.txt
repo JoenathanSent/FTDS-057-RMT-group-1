@@ -1,0 +1,7 @@
+pandas
+statsmodels
+matplotlib
+lightgbm
+sklearn
+pmdarima
+streamlit-option-menu
