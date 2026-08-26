@@ -127,7 +127,7 @@ def run_am5_amd_a620():
         st.write(f'p-value: {result[1]}')
         st.write('Nilai Kritikal (Critical Values):')
         for key, value in result[4].items():
-            st.write(f'Nilai Signifikasnsi \t{key}: {value}')
+            st.write(f'Nilai signifikansi \t{key}: {value}')
 
         st.write('\n--- Kesimpulan ---')
         if (result[1] < 0.05) & (result[4]['5%'] > result[0]):

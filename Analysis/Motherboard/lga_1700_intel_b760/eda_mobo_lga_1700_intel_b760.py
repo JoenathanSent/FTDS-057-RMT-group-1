@@ -113,9 +113,9 @@ def run_lga_1700_intel_b760():
 
     st.write('Dari visualisasi ACF dan PACF diatas, dapat diketahui bahwa:')
     st.write('- Dari visualisasi diatas, ACF bersifat tails off berarti nilai q = 0 ')
-    st.write('- PACF bersifat cuts off setelah lag 3, berarti nilai p = 3, dengan alternatif nilai p adalah 8, 9, 18, dan 23')
+    st.write('- PACF bersifat cuts off setelah lag 2, berarti nilai p = 2, dengan alternatif nilai p adalah 6, 9, 27, dan 29')
     st.write('- Karena data belum melalui diferensiasi, maka nilai d = 0')
-    st.write('Dari poin diatas, maka model awal yang bisa digunakan adalah menggunakan parameter ARIMA(3,0,0)')
+    st.write('Dari poin diatas, maka model awal yang bisa digunakan adalah menggunakan parameter ARIMA(2,0,0)')
 
     st.subheader('3. Pembuktian bahwa data belum stasioner dengan ADF test')
     def perform_adf_test(series: pd.Series, series_name: str = "the series"):
@@ -127,7 +127,7 @@ def run_lga_1700_intel_b760():
         st.write(f'p-value: {result[1]}')
         st.write('Nilai Kritikal (Critical Values):')
         for key, value in result[4].items():
-            st.write(f'Nilai Signifikasnsi \t{key}: {value}')
+            st.write(f'Nilai signifikansi \t{key}: {value}')
 
         st.write('\n--- Kesimpulan ---')
         if (result[1] < 0.05) & (result[4]['5%'] > result[0]):
@@ -147,7 +147,7 @@ def run_lga_1700_intel_b760():
 
     train_diff = df_avg_price_train.diff().dropna()
     perform_adf_test(train_diff['avg'], series_name="Data Harga Rata-rata Motherboard LGA 1700 Intel B760 melalui 1x diferensiasi")
-    st.write('Dengan ini, maka model prediksi yang cocok digunakan adalah ARIMA (3,1,0)')
+    st.write('Dengan ini, maka model prediksi yang cocok digunakan adalah ARIMA (2,1,0)')
 
 
 if __name__ == '__main__':
