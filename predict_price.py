@@ -27,7 +27,7 @@ arima_ram = joblib.load('./models/arima/ram.joblib')
 def run_predict_price():
     st.title('DealSense')
 
-    st.image("assets/banner_inference_alt.svg", use_container_width=True)
+    st.image("assets/banner_inference_alt.svg", width="content")
 
     st.subheader('Dapatkan perkiraan harga part PC mu!')
 
