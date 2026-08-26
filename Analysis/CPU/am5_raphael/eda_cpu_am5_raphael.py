@@ -93,11 +93,11 @@ def run_cpu_am5_raphael():
     st.pyplot(fig)
     st.write('')
     st.write('Dari 2 visualisasi dekomposisi diatas, dapat kita ambil kesimpulan bahwa:')
-    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga CPU untuk AM5 Raphael cenderung menetap selama sekitar 2 bulan setelah perilisan, kemudian terjadi penurunan harga secara perlahan dalam kurun waktu sampai dengan hampir 4 tahun setelah perilisan')
-    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Socket CPU AM5 Raphael')
-    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Socket CPU AM5 Raphael')
+    st.write('- Trend dari metode aditif dan multiplikatif menunjukkan bahwa harga CPU untuk AM5 Raphael cenderung menetap selama sekitar 2 bulan setelah perilisan, kemudian terjadi penurunan harga secara perlahan dalam kurun waktu sampai dengan hampir 4 tahun setelah perilisan.')
+    st.write('- Visualisasi seasonal dari metode aditif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 0, dan untuk metode multiplikatif tidak menunjukkan nilai maksimum atau minimum yang jauh dari 1. Ditambah lagi visualisasi dari tren tidak menunjukkan kesamaan dengan visualisasi dari seasonal. Ini menunjukkan tidak adanya seasonal untuk harga rata-rata Socket CPU AM5 Raphael.')
+    st.write('- Untuk nilai residual, bisa dilihat dari visualisasi dari metode aditif dan multiplikatif bahwa metode multiplikatif memiliki nilai residu yang lebih merata dan tidak jauh dari nilai awalnya (untuk metode aditif, nilai awalnya adalah 0, sedangkan untuk metode multiplikatif nilai awalnya adalah 1). Sehingga bisa disimpulkan dekomposisi dengan metode multiplikatif adalah metode terbaik untuk menghitung rata-rata harga Socket CPU AM5 Raphael.')
 
-    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function  (PACF)')
+    st.subheader('2. Analisa Auto Correlation Function (ACF) dan Partial Auto Corellation Function (PACF)')
     len_train = round(len(df) * 0.9)
 
     df_avg_price_train = df[:len_train]
@@ -127,7 +127,7 @@ def run_cpu_am5_raphael():
         st.write(f'p-value: {result[1]}')
         st.write('Nilai Kritikal (Critical Values):')
         for key, value in result[4].items():
-            st.write(f'Nilai Signifikasnsi \t{key}: {value}')
+            st.write(f'Nilai Signifikansi \t{key}: {value}')
 
         st.write('\n--- Kesimpulan ---')
         if (result[1] < 0.05) & (result[4]['5%'] > result[0]):
