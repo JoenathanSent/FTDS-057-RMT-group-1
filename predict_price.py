@@ -161,6 +161,8 @@ def arima_predict(cat_opt, group_opt, steps = 60):
         model_group = arima_gpu
     elif cat_opt == 'MEMORY':
         model_group = arima_ram
+    elif cat_opt == 'SOLID STATE DRIVES':
+        model_group = arima_ssd
     else:
         return None
 
