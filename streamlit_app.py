@@ -25,7 +25,7 @@ from streamlit_option_menu import option_menu
 
 # 1. as sidebar menu
 with st.sidebar:
-    selected = option_menu(
+    selected_eda = option_menu(
         "EDA",
         [
             "CPU Socket LGA 1700 Raptor Lake",
@@ -62,32 +62,43 @@ with st.sidebar:
         menu_icon="cast",
         default_index=0
     )
+    selected_inference = option_menu(
+            "Inference",
+            [
+                "Inference",
+            ],
+            icons=[
+                "magic",
+            ],
+            menu_icon="cast",
+            default_index=0
+        )
 
-if selected == "CPU Socket LGA 1700 Raptor Lake":
+if selected_eda == "CPU Socket LGA 1700 Raptor Lake":
     run_lga_1700_raptor_lake()
-elif selected == "CPU Socket AM5 Raphael":
+elif selected_eda == "CPU Socket AM5 Raphael":
     run_cpu_am5_raphael()
-elif selected == "CPU Cooler Air Cooler":
+elif selected_eda == "CPU Cooler Air Cooler":
     run_air_cooler()
-elif selected == "GPU RTX 5060 Ti":
+elif selected_eda == "GPU RTX 5060 Ti":
     run_rtx_5060_ti()
-elif selected == "GPU RX 9060 XT":
+elif selected_eda == "GPU RX 9060 XT":
     run_rx_9060_xt()
-elif selected == "Motherboard LGA 1700 Intel B760":
+elif selected_eda == "Motherboard LGA 1700 Intel B760":
     run_lga_1700_intel_b760()
-elif selected == "Motherboard AM5 AMD A620":
+elif selected_eda == "Motherboard AM5 AMD A620":
     run_am5_amd_a620()
-elif selected == "PSU 650W 80 Plus Gold":
+elif selected_eda == "PSU 650W 80 Plus Gold":
     run_650w_80plus_gold()
-elif selected == "PSU 750W 80 Plus Gold":
+elif selected_eda == "PSU 750W 80 Plus Gold":
     run_750w_80plus_gold()
-elif selected == "RAM 16GB DDR5":
+elif selected_eda == "RAM 16GB DDR5":
     run_ram_16gb_ddr5()
-elif selected == "RAM 32GB DDR5":
+elif selected_eda == "RAM 32GB DDR5":
     run_ram_32gb_ddr5()
-elif selected == "SSD 1TB PCIE Gen4 x4":
+elif selected_eda == "SSD 1TB PCIE Gen4 x4":
     run_ssd_1tb_pcie_gen4_x4()
-elif selected == "SSD 2TB PCIE Gen4 x4":
+elif selected_eda == "SSD 2TB PCIE Gen4 x4":
     run_ssd_2tb_pcie_gen4_x4()
-elif selected == "Inference":
+elif selected_inference == "Inference":
     run_predict_price()
