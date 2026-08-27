@@ -112,9 +112,9 @@ def run_predict_price():
     changes = []
 
     # lightGBM
-    lgbm_pct_change = lgbm_predict(group_opt, steps=steps)
-    if lgbm_pct_change is not None:
-        changes.append(lgbm_pct_change)
+    # lgbm_pct_change = lgbm_predict(group_opt, steps=steps)
+    # if lgbm_pct_change is not None:
+    #     changes.append(lgbm_pct_change)
 
     # ARIMA
     arima_pct_change = arima_predict(cat_opt, group_opt, steps=steps)
