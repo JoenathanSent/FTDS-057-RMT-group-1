@@ -44,7 +44,8 @@ def run_ram_32gb_ddr5():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga RAM 32GB DDR5')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Rata-rata Harga RAM 32GB DDR5')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 
@@ -74,7 +75,8 @@ def run_ram_32gb_ddr5():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga RAM 32GB DDR5')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Rata-rata Harga RAM 32GB DDR5')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 

@@ -44,7 +44,8 @@ def run_ssd_1tb_pcie_gen4_x4():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga SSD 1TB PCIE Gen4x4')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Rata-rata Harga SSD 1TB PCIE Gen4x4')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 
@@ -74,7 +75,8 @@ def run_ssd_1tb_pcie_gen4_x4():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga SSD 1TB PCIE Gen4x4')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Rata-rata Harga SSD 1TB PCIE Gen4x4')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 

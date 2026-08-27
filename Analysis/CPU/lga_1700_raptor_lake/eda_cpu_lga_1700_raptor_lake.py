@@ -45,7 +45,7 @@ def run_lga_1700_raptor_lake():
     )
     fig.axes[0].set_title('Data Rata-rata Harga Socket CPU LGA 1700 Raptor Lake')
     fig.axes[1].set_title('Tren Harga Socket CPU LGA 1700 Raptor Lake')
-    fig.subplots_adjust(hspace=0.5)
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 
@@ -75,7 +75,8 @@ def run_lga_1700_raptor_lake():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga Socket CPU LGA 1700 Raptor Lake')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Harga Socket CPU LGA 1700 Raptor Lake')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 

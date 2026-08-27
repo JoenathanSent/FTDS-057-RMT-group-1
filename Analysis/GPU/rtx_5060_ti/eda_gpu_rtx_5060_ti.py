@@ -44,7 +44,8 @@ def run_rtx_5060_ti():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga GPU RTX 5060 Ti')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Rata-rata Harga GPU RTX 5060 Ti')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 
@@ -74,7 +75,8 @@ def run_rtx_5060_ti():
         y=1.02
     )
     fig.axes[0].set_title('Data Rata-rata Harga GPU RTX 5060 Ti')
-    fig.subplots_adjust(hspace=0.5)
+    fig.axes[1].set_title('Tren Rata-rata Harga GPU RTX 5060 Ti')
+    fig.subplots_adjust(hspace=1)
     for ax in fig.axes:
         ax.tick_params(axis='x', labelbottom=True)
 
