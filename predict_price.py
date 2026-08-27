@@ -12,7 +12,7 @@ from models.lgbm.predict import predict
 
 cwd = Path.cwd()
 
-local_price = pd.read_csv(cwd / 'data' / 'local_price_test.csv')
+local_price = pd.read_csv(cwd / 'data' / 'local_price_ssd.csv')
 pangoly_price = pd.read_csv(cwd / 'data' / 'pangoly.csv')
 pangoly_price['date'] = pd.to_datetime(pangoly_price['date'])
 
@@ -23,17 +23,18 @@ lgbm = joblib.load('./models/lgbm/lgbm.joblib')
 arima_cpu = joblib.load('./models/arima/cpu.joblib')
 arima_gpu = joblib.load('./models/arima/gpu.joblib')
 arima_ram = joblib.load('./models/arima/ram.joblib')
+arima_ssd = joblib.load('./models/arima/ssd.joblib')
 
 def run_predict_price():
     st.title('DealSense')
 
-    st.image("assets/banner_inference_alt.svg", width="content")
+    st.image("assets/banner_inference_alt.svg", use_container_width=True)
 
     st.subheader('Dapatkan perkiraan harga part PC mu!')
 
     cat_opt = st.selectbox(
         "Category: ",
-        ("PROCESSORS", "GRAPHICS CARDS", "MEMORY"),
+        ("PROCESSORS", "GRAPHICS CARDS", "MEMORY", "SOLID STATE DRIVES"),
     )
 
     # filter product by category
@@ -42,7 +43,8 @@ def run_predict_price():
     sub_cat_maps = {
         "PROCESSORS": ["INTEL", "AMD"],
         "GRAPHICS CARDS": ["NVIDIA", "AMD"],
-        "MEMORY": ["DDR4", "DDR5"]
+        "MEMORY": ["DDR4", "DDR5"],
+        "SOLID STATE DRIVES": ["SATA", "PCIe Gen3", "PCIe Gen4", "PCIe Gen5"],
     }
 
     sub_cat_opt = st.selectbox(
@@ -52,7 +54,9 @@ def run_predict_price():
 
     # filter products by sub category
     if cat_opt == 'GRAPHICS CARDS' and sub_cat_opt == 'NVIDIA':
-        sub_cat_df = selected_cat_df[selected_cat_df['pangoly_group'].str.contains('GeForce')]
+        sub_cat_df = selected_cat_df[selected_cat_df['pangoly_group'].str.contains('GeForce', na=False)]
+    elif cat_opt == 'SOLID STATE DRIVES':
+        sub_cat_df = selected_cat_df[selected_cat_df['pangoly_group'].str.contains(sub_cat_opt)]
     else:    
         sub_cat_df = selected_cat_df[selected_cat_df['product_name'].str.contains(sub_cat_opt)]
 
