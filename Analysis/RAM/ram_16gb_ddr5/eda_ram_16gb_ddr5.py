@@ -17,7 +17,7 @@ def run_ram_16gb_ddr5():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen RAM 16GB DDR5')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen RAM 16GB DDR5')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer RAM 16GB DDR5 sejak tanggal 24 November 2021 sampai dengan 21 Agustus 2026.')

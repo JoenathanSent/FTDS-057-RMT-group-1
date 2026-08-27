@@ -28,7 +28,7 @@ arima_ssd = joblib.load('./models/arima/ssd.joblib')
 def run_predict_price():
     st.title('DealSense')
 
-    st.image("assets/banner_inference_alt.svg", use_container_width=True)
+    st.image("DealSense.jpg", caption="DealSense", width=300)
 
     st.subheader('Dapatkan perkiraan harga part PC mu!')
 

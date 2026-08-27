@@ -17,7 +17,7 @@ def run_am5_amd_a620():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Motherboard Merk AM5 AMD A620')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Motherboard Merk AM5 AMD A620')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer Motherboard AM5 AMD A620 sejak tanggal 12 April 2023 sampai dengan 21 Agustus 2026.')

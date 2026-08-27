@@ -17,7 +17,7 @@ def run_lga_1700_raptor_lake():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen CPU Socket Merk LGA 1700 Raptor Lake')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen CPU Socket Merk LGA 1700 Raptor Lake')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer CPU Socket LGA 1700 Raptor Lake sejak tanggal 4 Oktober 2022 sampai dengan 21 Agustus 2026.')

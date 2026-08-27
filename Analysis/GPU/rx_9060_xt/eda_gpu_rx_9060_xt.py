@@ -17,7 +17,7 @@ def run_rx_9060_xt():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen GPU Merk RX 9060 XT')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen GPU Merk RX 9060 XT')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer GPU RX 9060 XT sejak tanggal 5 Juni 2025 sampai dengan 21 Agustus 2026.')

@@ -17,7 +17,7 @@ def run_air_cooler():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Pendingin CPU Air Cooler')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Pendingin CPU Air Cooler')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer Pendingin CPU Air Cooler sejak tanggal 21 Agustus 2022 sampai dengan 21 Agustus 2026.')

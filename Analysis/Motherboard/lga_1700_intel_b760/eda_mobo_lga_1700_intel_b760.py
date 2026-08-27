@@ -17,7 +17,7 @@ def run_lga_1700_intel_b760():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Motherboard Merk LGA 1700 Intel B760')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen Motherboard Merk LGA 1700 Intel B760')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer Motherboard LGA 1700 Intel B760 sejak tanggal 7 Januari 2023 sampai dengan 21 Agustus 2026.')

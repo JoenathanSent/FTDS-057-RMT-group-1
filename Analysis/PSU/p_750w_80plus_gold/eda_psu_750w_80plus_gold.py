@@ -17,7 +17,7 @@ def run_750w_80plus_gold():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen PSU 750W 80+ Gold')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen PSU 750W 80+ Gold')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer PSU 750W 80+ Gold sejak tanggal 21 Agustus 2021 sampai dengan 21 Agustus 2026.')

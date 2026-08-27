@@ -17,7 +17,7 @@ def run_rtx_5060_ti():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen GPU RTX 5060 Ti')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen GPU RTX 5060 Ti')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer GPU RTX 5060 Ti sejak tanggal 16 April 2025 sampai dengan 21 Agustus 2026.')

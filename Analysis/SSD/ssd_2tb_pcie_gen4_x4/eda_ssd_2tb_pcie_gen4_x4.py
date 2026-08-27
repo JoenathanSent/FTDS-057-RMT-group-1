@@ -17,7 +17,7 @@ def run_ssd_2tb_pcie_gen4_x4():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen SSD 2TB PCIE Gen4x4')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen SSD 2TB PCIE Gen4x4')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer SSD 2TB PCIE Gen4x4 sejak tanggal 21 Agustus 2021 sampai dengan 21 Agustus 2026.')

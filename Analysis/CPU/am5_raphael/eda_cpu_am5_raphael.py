@@ -17,7 +17,7 @@ def run_cpu_am5_raphael():
     st.title('DealSense')
 
     # Membuat sub header
-    st.subheader('Page ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen CPU Socket Merk AM5 Raphael')
+    st.subheader('Halaman ini berisi Exploratory Data Analysis (EDA) mengenai dataset harga komponen CPU Socket Merk AM5 Raphael')
 
     # Menampilkan teks
     st.write('Halaman ini menampilkan eksplorasi data dari data harga komponen komputer CPU Socket AM5 Raphael sejak tanggal 4 Oktober 2022 sampai dengan 21 Agustus 2026.')
